@@ -14,8 +14,10 @@ class App extends React.Component {
 
 			return (
 				<div>
-					<Header/>
-					<Content/>
+					<Header title={ this.props.headertitle }/>
+					<Content title={this.props.contentTitle }
+										body={this.props.contentBody}/>
+					<h1>{this.props.title}</h1>
 				</div>
 			);
 			// return (
@@ -28,6 +30,12 @@ class App extends React.Component {
 			// );
 	}
 }
+
+App.defaultProps = {
+	headerTitle: 'Default header',
+	contentTitle: 'Default contentTitle',
+	contentBody: 'Defaut contentBody'
+};
 
 class Header extends React.Component {
 	render(){
@@ -43,6 +51,8 @@ class Content extends React.Component {
 					<div>
 							<h2>Content</h2>
 							<p> Hey! </p>
+							<h2>{this.props.title}</h2>
+							<p>{this.props.body}</p>
 					</div>
 			);
 	}

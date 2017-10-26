@@ -13,14 +13,41 @@ class App extends React.Component {
 			};
 
 			return (
+				<div>
+					<Header/>
+					<Content/>
+				</div>
+			);
+			// return (
+			// 		<div>
+			// 			<h1>Hello React Skeleton</h1>
+			// 			<h2>Welcome to {text}</h2>
+			// 			<button onClick={this.sayHey}>Click Me</button>
+			// 			<p style={pStyle}>{1 === 1 ? 'True' : 'False'}</p>
+			// 		</div>
+			// );
+	}
+}
+
+class Header extends React.Component {
+	render(){
+			return (
+					<h1>Header</h1>
+			);
+	}
+}
+
+class Content extends React.Component {
+	render(){
+			return (
 					<div>
-						<h1>Hello React Skeleton</h1>
-						<h2>Welcome to {text}</h2>
-						<button onClick={this.sayHey}>Click Me</button>
-						<p style={pStyle}>{1 === 1 ? 'True' : 'False'}</p>
+							<h2>Content</h2>
+							<p> Hey! </p>
 					</div>
 			);
 	}
 }
+
+
 
 export default App;

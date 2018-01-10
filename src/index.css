@@ -1,0 +1,8 @@
+.borders {
+	border: dashed 2px rgb(248, 42, 76);
+}
+
+.carousel {
+	border: dashed 2px rgb(55, 30, 154);
+	background-color: aquamarine;
+}

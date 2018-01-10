@@ -1,8 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import './index.css';
 import App from './components/App';
+import Clock from './components/Clock';
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(<App headerTitle="Welcome"
-											contnetTitle="Stranger,"
-											contnetBody="Welcome to example app" />, rootElement);
+import Carousel from './components/Carousel';
+
+
+
+
+ReactDOM.render(
+	<App
+		headerTitle="Welcome"
+		contentTitle="Stranger"
+		contentBody="Welcome to example app"
+	/>,
+	document.getElementById('root')
+);
+
+ReactDOM.render(
+	<Clock />,
+	document.getElementById('root2nd')
+);
+
+ReactDOM.render(
+	<Carousel />,
+	document.getElementById('root3rd')
+);

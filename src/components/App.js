@@ -1,4 +1,7 @@
+//@flow
+
 import React from 'react';
+import Content from './Content';
 
 class App extends React.Component {
 	sayHey(){
@@ -6,17 +9,17 @@ class App extends React.Component {
 	}
 
 	render(){
-			let text = "Dev-server";
-			let pStyle={
+			let text = "Dev-server",
+			pStyle = {
 				color:'aqua',
 				backgroundColor:'black'
 			};
 
 			return (
 				<div>
-					<Header title={ this.props.headertitle }/>
+					<Header title={ this.props.headerTitle } />
 					<Content title={this.props.contentTitle }
-										body={this.props.contentBody}/>
+										body={this.props.contentBody} />
 					<h1>{this.props.title}</h1>
 				</div>
 			);
@@ -25,7 +28,7 @@ class App extends React.Component {
 			// 			<h1>Hello React Skeleton</h1>
 			// 			<h2>Welcome to {text}</h2>
 			// 			<button onClick={this.sayHey}>Click Me</button>
-			// 			<p style={pStyle}>{1 === 1 ? 'True' : 'False'}</p>
+			// 			<p style={pStyle}>{1 === 1 ? 'True' : 'False'}</Np>
 			// 		</div>
 			// );
 	}
@@ -37,6 +40,28 @@ App.defaultProps = {
 	contentBody: 'Defaut contentBody'
 };
 
+/* App.React.alert(()=>{"hoho"});
+
+type Storage = {
+	set(key: string, value: any) : void,
+	get(key): any,
+	remove(key): void
+};
+
+const storage: Storage = {
+	set(key, value){
+		st[key] = JSON.stringify(value);
+	},
+	get(hey){
+		if (!st[key]) return null;
+	}
+}; */
+
+
+const key = localStorage.getItem("key");
+
+
+
 class Header extends React.Component {
 	render(){
 			return (
@@ -45,19 +70,17 @@ class Header extends React.Component {
 	}
 }
 
-class Content extends React.Component {
-	render(){
-			return (
-					<div>
-							<h2>Content</h2>
-							<p> Hey! </p>
-							<h2>{this.props.title}</h2>
-							<p>{this.props.body}</p>
-					</div>
-			);
+/* class Content extends React.Component {
+	render() {
+		return (
+			<div>
+				<h2>Content</h2>
+				<p> Hey! </p>
+				<h2>{this.props.title}</h2>
+				<p>{this.props.body}</p>
+			</div>
+		);
 	}
-}
-
-
+} */
 
 export default App;

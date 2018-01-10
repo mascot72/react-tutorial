@@ -1,28 +1,42 @@
+var webpack = require('webpack');
+
 module.exports = {
-	entry: './src/index.js',
+	entry: ['react-hot-loader/patch', './src/index.js'],
 
 	output: {
-			path: __dirname + '/public/',
-			filename: 'bundle.js'
+		path: __dirname + '/public/',
+		filename: 'bundle.js'
 	},
 
 	devServer: {
-			inline: true,
-			port: 7777,
-			contentBase: __dirname + '/public/'
+		hot: true,
+		inline: true,
+		host: '0.0.0.0',
+		port: 7777,
+		contentBase: __dirname + '/public/'
 	},
 
 	module: {
-					loaders: [
-							{
-									test: /\.js$/,
-									loader: 'babel-loader',
-									exclude: /node_modules/,
-									query: {
-											cacheDirectory: true,
-											presets: ['es2015', 'react']
-									}
-							}
-					]
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					cacheDirectory: true,
+					presets: ['es2015', 'react'],
+					plugins: ['react-hot-loader/babel']
+				}
+			},
+			{
+				test: /\.css$/,
+				include: /node_modules/,
+				loaders: ['style-loader', 'css-loader'],
 			}
+		]
+	},
+
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 };

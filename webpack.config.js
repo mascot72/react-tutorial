@@ -1,8 +1,10 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const path = require('path');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: ['react-hot-loader/patch', './src/index.js'],
-
+	mode: 'development',
 	output: {
 		path: __dirname + '/public/',
 		filename: 'bundle.js'
@@ -10,33 +12,42 @@ module.exports = {
 
 	devServer: {
 		hot: true,
-		inline: true,
-		host: '0.0.0.0',
+		host: 'localhost',
 		port: 7777,
-		contentBase: __dirname + '/public/'
+		static: {
+			directory: path.join(__dirname, 'public'),
+		},
 	},
 
 	module: {
-		loaders: [
+		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,
-				query: {
-					cacheDirectory: true,
-					presets: ['es2015', 'react'],
-					plugins: ['react-hot-loader/babel']
-				}
+				options: {
+					presets: ['@babel/preset-env', '@babel/preset-react']
+				},
+			},
+			{
+				test: /\.html$/,
+				loader: 'html-loader',
+				options: {
+					minimize: true,
+				},
 			},
 			{
 				test: /\.css$/,
 				include: /node_modules/,
-				loaders: ['style-loader', 'css-loader'],
+				use: ['style-loader', 'css-loader'],
 			}
 		]
 	},
 
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin({
+			template: './public/index.html',
+		})
+		// new HtmlWebpackPlugin()
 	]
 };
